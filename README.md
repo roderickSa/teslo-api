@@ -6,7 +6,7 @@
 
 ### General info
 
-<strong>Project is created with</strong>:
+<strong>Technologies</strong>:
 
 <ol>
   <li>nestjs</li>
