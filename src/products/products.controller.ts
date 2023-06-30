@@ -48,10 +48,9 @@ export class ProductsController {
   @Auth(validRoles.admin)
   update(
     @Param('id', new ParseUUIDPipe()) id: string,
-    @GetUser() user: User,
     @Body() updateProductDto: UpdateProductDto,
   ) {
-    return this.productsService.update(id, user, updateProductDto);
+    return this.productsService.update(id, updateProductDto);
   }
 
   @Delete(':id')

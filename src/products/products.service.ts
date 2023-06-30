@@ -82,12 +82,11 @@ export class ProductsService {
     return product;
   }
 
-  async update(id: string, user: User, updateProductDto: UpdateProductDto) {
+  async update(id: string, updateProductDto: UpdateProductDto) {
     //preload products with changes
     const product = await this.productRepository.preload({
       id,
       ...updateProductDto,
-      user,
     });
 
     if (!product) {
