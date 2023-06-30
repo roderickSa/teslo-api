@@ -27,6 +27,24 @@ export class CloudinaryService {
     return Promise.all(arrayPromises);
   }
 
+  async uploadImageByPath(
+    files: string[],
+    folder: string,
+  ): Promise<UploadApiResponse[]> {
+    const arrayPromises = [];
+    files.forEach((file) => {
+      const promise = new Promise((resolve, reject) => {
+        v2.uploader.upload(file, { folder }, (error, result) => {
+          if (error) return reject(error);
+          resolve(result);
+        });
+      });
+      arrayPromises.push(promise);
+    });
+
+    return Promise.all(arrayPromises);
+  }
+
   async deleteImage(public_ids: string[]) {
     return new Promise((resolve, reject) => {
       v2.api.delete_resources(public_ids, (error, result) => {
