@@ -68,6 +68,7 @@ export class ProductsService {
       const queryBuilder = this.productRepository.createQueryBuilder('prod');
       product = await queryBuilder
         .leftJoinAndSelect('prod.images', 'prodImages')
+        .leftJoinAndSelect('prod.user', 'prodUser')
         .where('title =:title or slug =:slug', {
           title: term,
           slug: term,
